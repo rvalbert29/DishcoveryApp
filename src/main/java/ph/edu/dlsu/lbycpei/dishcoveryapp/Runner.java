@@ -1,5 +1,3 @@
-
-
 package ph.edu.dlsu.lbycpei.dishcoveryapp;
 
 import javafx.application.Application;
