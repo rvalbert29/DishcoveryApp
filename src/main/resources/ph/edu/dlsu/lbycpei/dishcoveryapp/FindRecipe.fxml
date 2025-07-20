@@ -20,7 +20,7 @@
                 <Image url="@images/header_background.png" />
             </image>
         </ImageView>
-        <Text fill="WHITE" strokeWidth="0" style="-fx-font-weight: bold;" text="Pantry Manager">
+        <Text strokeWidth="0" style="-fx-font-weight: bold;" text="Find Recipes">
             <font>
                 <Font size="32.0" />
             </font>
@@ -29,25 +29,25 @@
 
     <!-- Main Content Area -->
     <VBox alignment="CENTER" layoutX="223.0" layoutY="187.0" prefHeight="346.0" prefWidth="590.0" spacing="20" translateX="-19.0" translateY="51.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="187.0" AnchorPane.topAnchor="187.0">
-      <StackPane prefHeight="122.0" prefWidth="589.0" translateY="23.0">
-         <children>
-      
-              <!-- Search Bar -->
-              <TextField fx:id="ingredientSearchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="545.0" promptText="Type ingredient..." style="-fx-font-size: 16px;" />
-            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" translateX="254.0">
-               <image>
-                  <Image url="@images/search.png" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
+        <StackPane prefHeight="122.0" prefWidth="589.0" translateY="23.0">
+            <children>
+
+                <!-- Search Bar -->
+                <TextField fx:id="ingredientSearchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="545.0" promptText="Type ingredient..." style="-fx-font-size: 16px;" />
+                <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" translateX="254.0">
+                    <image>
+                        <Image url="@images/search.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
         <!-- Instruction Text -->
-        <Text style="-fx-font-size: 18px;" text="Enter your available ingredients:" translateY="-150.0" />
+        <Text style="-fx-font-size: 18px;" text="Enter a Dish:" translateY="-150.0" />
 
         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="132.0" prefWidth="160.0" spacing="10" translateY="-60.0">
             <children>
-                <Button fx:id="matchRecipesButton" mnemonicParsing="false" prefHeight="40" prefWidth="150" style="-fx-font-size: 16px;" text="Match Recipes" translateY="-6.0" />
-                <Button fx:id="backButton" mnemonicParsing="false" prefHeight="40" prefWidth="150" style="-fx-font-size: 16px;" text="Back" />
+                <Button fx:id="matchRecipesButton" mnemonicParsing="false" prefHeight="40" prefWidth="150" style="-fx-font-size: 16px;" text="Search" translateY="-6.0" />
+                <Button fx:id="backButton" mnemonicParsing="false" prefHeight="40" prefWidth="150" style="-fx-font-size: 16px;" text="←Back" />
             </children>
         </VBox>
     </VBox>
