@@ -7,8 +7,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 
 <BorderPane prefHeight="202.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
 
     <!-- Center Section - Main Content -->
     <center>

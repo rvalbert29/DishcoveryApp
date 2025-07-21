@@ -16,8 +16,9 @@ public class Runner extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PantryManager1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddRecipeWithImage.fxml"));
         Scene scene = new Scene(loader.load(), 1000, 600);
+        stage.setTitle("Dishcovery App");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
 
