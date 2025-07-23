@@ -15,4 +15,15 @@ public class RecipeRepository {
     public static List<Recipe> getRecipes() {
         return new ArrayList<>(recipes);
     }
+
+    private static final List<Recipe> activeSessionRecipes = new ArrayList<>();
+
+    public static boolean deleteRecipe(Recipe recipe) {
+        return activeSessionRecipes.remove(recipe); // Only affects current session
+    }
+
+    public static List<Recipe> getActiveSessionRecipes() {
+        return new ArrayList<>(activeSessionRecipes);
+    }
+
 }

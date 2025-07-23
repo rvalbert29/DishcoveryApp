@@ -24,7 +24,7 @@
             <Button fx:id="backButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="106.0" text=" ←Back" />
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="345.0" translateX="155.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="154.0" text="Delete Recipe" />
+                  <Button fx:id="deleteButton" onAction="#handleDeleteRecipe" mnemonicParsing="false" prefHeight="45.0" prefWidth="154.0" text="Delete Recipe" />
                   <Button mnemonicParsing="false" text="Add to Favorites" translateX="21.0" />
                </children>
             </HBox>
