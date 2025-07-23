@@ -6,7 +6,7 @@
 <?import javafx.geometry.*?>
 
 <?import java.net.URL?>
-<AnchorPane fx:id="rootPane" prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.DeletedPopupController" fx:id="rootPane" prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <stylesheets>
         <URL value="@styles.css"/>
@@ -21,7 +21,7 @@
               wrappingWidth="300"/>
 
         <!-- Button -->
-        <Button fx:id="closeButton" mnemonicParsing="false"
+        <Button fx:id="closeButton"  mnemonicParsing="false"
                 style="-fx-font-size: 14px; -fx-pref-width: 100;"
                 text="Close"/>
     </VBox>
