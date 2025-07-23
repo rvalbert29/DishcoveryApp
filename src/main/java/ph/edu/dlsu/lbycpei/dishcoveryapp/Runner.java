@@ -1,6 +1,6 @@
 package ph.edu.dlsu.lbycpei.dishcoveryapp;
 
-//hello test
+//test 2
 
 import javafx.application.Application;
 import javafx.stage.Stage;
