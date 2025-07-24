@@ -71,5 +71,15 @@ public class RecipeRepository {
         }
     }
 
+    private static List<Recipe> favoriteRecipes = new ArrayList<>();
 
+    public static void addFavorite(Recipe recipe) {
+        if (!favoriteRecipes.contains(recipe)) {
+            favoriteRecipes.add(recipe);
+        }
+    }
+
+    public static List<Recipe> getFavoriteRecipes() {
+        return favoriteRecipes;
+    }
 }
