@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,6 @@ public class RecipeRepository {
             return false;
         }
     }
-
 
     private static void loadRecipesFromFile() {
         File file = new File(FILE_PATH);

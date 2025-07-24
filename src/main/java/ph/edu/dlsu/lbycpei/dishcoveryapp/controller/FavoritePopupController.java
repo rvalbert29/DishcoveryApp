@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -72,30 +73,28 @@ public class FavoritePopupController {
     @FXML
     private void handleViewRecipe(ActionEvent event) {
         if (recipeToView == null) {
-            System.out.println("No recipe to view.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Recipe Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("There is no recipe to view.");
+            alert.showAndWait();
             return;
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/RecipeDisplay.fxml"));
-            Parent root = loader.load();
+            FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/RecipeDisplay.fxml"));
+            Parent viewRoot = viewLoader.load();
 
-            // Pass the recipe to the display controller
-            RecipeDisplayController controller = loader.getController();
-            controller.setRecipe(recipeToView); // this method must exist in RecipeDisplayController
+            RecipeDisplayController viewController = viewLoader.getController();
+            viewController.setRecipe(recipeToView);
 
-            Stage stage = new Stage();
-            stage.setTitle(recipeToView.getName());
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            // Close the popup
-            ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+            // Show in same window (close popup and show recipe)
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.setScene(new Scene(viewRoot));
+            currentStage.setTitle("View Recipe");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
