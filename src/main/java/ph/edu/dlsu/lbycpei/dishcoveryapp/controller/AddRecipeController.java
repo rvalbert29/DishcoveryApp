@@ -3,6 +3,7 @@ package ph.edu.dlsu.lbycpei.dishcoveryapp.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
@@ -49,6 +51,8 @@ public class AddRecipeController {
     private Button backButton;
 
     private File selectedImageFile;
+
+
 
     @FXML
     private void initialize() {
@@ -154,10 +158,42 @@ public class AddRecipeController {
 
         System.out.println("Recipe saved to file!");
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Saved.fxml"));
+            Parent root = loader.load();
 
+            SavedPopupController controller = loader.getController();
+            controller.setRecipe(newRecipe);
 
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(root));
+            popupStage.setTitle("Saved Confirmation");
+            popupStage.showAndWait();
 
+            // Check what user chose in the popup
+            String userChoice = controller.getResult();
 
+            if (userChoice.equals("view")) {
+                FXMLLoader viewLoader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/RecipeDisplay.fxml"));
+                Parent viewRoot = viewLoader.load();
+
+                RecipeDisplayController viewController = viewLoader.getController();
+                viewController.setRecipe(newRecipe);
+
+                // Show in same window
+                Stage currentStage = (Stage) recipeNameField.getScene().getWindow();
+                currentStage.setScene(new Scene(viewRoot));
+                currentStage.setTitle("View Recipe");
+
+            } else {
+                // user clicked Close
+                handleBackToMainMenu(null, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
