@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -14,8 +15,12 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
 import javafx.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
+import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
+import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
+
+import java.io.*;
+
+import java.util.List;
 
 public class AddRecipeController {
 
@@ -51,6 +56,17 @@ public class AddRecipeController {
         saveButton.setOnAction(e -> handleSaveRecipe());
         clearButton.setOnAction(e -> handleClear());
         backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+    }
+
+    private void handleClear() {
+        recipeNameField.clear();
+        ingredientsArea.clear();
+        instructionsArea.clear();
+        recipeImageView.setImage(null);
+        selectedImageFile = null;
+
+        // Show the placeholder text again
+        placeholderText.setVisible(true);  // Fix this line too (see below)
     }
 
     @FXML
@@ -94,35 +110,54 @@ public class AddRecipeController {
     }
 
     private void handleSaveRecipe() {
-        String name = recipeNameField.getText();
-        String ingredients = ingredientsArea.getText();
-        String instructions = instructionsArea.getText();
+        String name = recipeNameField.getText().trim();
+        String ingredientsText = ingredientsArea.getText().trim();
+        String instructions = instructionsArea.getText().trim();
 
-        if (name.isEmpty() || ingredients.isEmpty() || instructions.isEmpty()) {
-            System.out.println("Please fill in all fields.");
+        if (name.isEmpty() || ingredientsText.isEmpty() || instructions.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields.");
+            alert.showAndWait();
             return;
         }
 
-        System.out.println("Recipe saved:");
-        System.out.println("Name: " + name);
-        System.out.println("Ingredients: " + ingredients);
-        System.out.println("Instructions: " + instructions);
-        System.out.println("Image: " + (selectedImageFile != null ? selectedImageFile.getAbsolutePath() : "None"));
+
+        String imagePath = null;
+        if (selectedImageFile != null) {
+            try {
+                File imageDir = new File("data/recipe_images");
+                if (!imageDir.exists()) imageDir.mkdirs();
+
+                File destFile = new File(imageDir, selectedImageFile.getName());
+                try (InputStream in = new FileInputStream(selectedImageFile);
+                     OutputStream out = new FileOutputStream(destFile)) {
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    while ((length = in.read(buffer)) > 0) {
+                        out.write(buffer, 0, length);
+                    }
+                }
+
+                imagePath = destFile.getPath();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Failed to copy image.");
+            }
+        }
+
+        List<String> parsedIngredients = List.of(ingredientsText.split("\\r?\\n"));
+        Recipe newRecipe = new Recipe(name, parsedIngredients, instructions, imagePath);
+
+        RecipeRepository.addRecipe(newRecipe);
+
+        System.out.println("Recipe saved to file!");
 
 
-        // Saving to memory or file will be added later.
-    }
-
-    private void handleClear() {
-        recipeNameField.clear();
-        ingredientsArea.clear();
-        instructionsArea.clear();
-        recipeImageView.setImage(null);
-        selectedImageFile = null;
-    }
 
 
-    private Stage getCurrentStage() {
-        return (Stage) recipeNameField.getScene().getWindow();
+
+
     }
 }
