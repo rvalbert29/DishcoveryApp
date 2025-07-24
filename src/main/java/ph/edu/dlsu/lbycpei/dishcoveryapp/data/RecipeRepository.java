@@ -1,29 +1,75 @@
-// RecipeRepository.java
 package ph.edu.dlsu.lbycpei.dishcoveryapp.data;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
+
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeRepository {
-    private static final List<Recipe> recipes = new ArrayList<>();
 
-    public static void addRecipe(Recipe recipe) {
+    private static final String FILE_PATH = "data/recipes.json";
+    private static  List<Recipe> recipes = new ArrayList<>();
+
+    static {
+        loadRecipesFromFile(); // Load when class is first used
+    }
+
+    public static boolean addRecipe(Recipe recipe) {
         recipes.add(recipe);
+        saveRecipesToFile();
+        return true;
     }
 
     public static List<Recipe> getRecipes() {
-        return new ArrayList<>(recipes);
+        return new ArrayList<>(recipes); // Return a copy
     }
-
-    private static final List<Recipe> activeSessionRecipes = new ArrayList<>();
 
     public static boolean deleteRecipe(Recipe recipe) {
-        return activeSessionRecipes.remove(recipe); // Only affects current session
+        boolean removed = recipes.remove(recipe);
+        if (removed) {
+            saveRecipesToFile();
+        }
+        return removed;
     }
 
-    public static List<Recipe> getActiveSessionRecipes() {
-        return new ArrayList<>(activeSessionRecipes);
+    private static boolean saveRecipesToFile() {
+        File dir = new File("data");
+        if (!dir.exists()) dir.mkdirs();
+
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            new Gson().toJson(recipes, writer);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
+
+    private static void loadRecipesFromFile() {
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return;
+
+        try (Reader reader = new FileReader(file)) {
+            if (file.length() == 0) return;
+
+            recipes = new Gson().fromJson(reader, new TypeToken<List<Recipe>>() {}.getType());
+
+            // Ensure null fallback
+            if (recipes == null) {
+                recipes = new ArrayList<>();
+            }
+
+        } catch (IOException | JsonSyntaxException e) {
+            e.printStackTrace();
+            recipes = new ArrayList<>(); // fallback to prevent crash
+        }
+    }
+
 
 }

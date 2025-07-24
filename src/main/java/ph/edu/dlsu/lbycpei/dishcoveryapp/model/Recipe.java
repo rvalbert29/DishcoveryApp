@@ -1,50 +1,27 @@
 package ph.edu.dlsu.lbycpei.dishcoveryapp.model;
 
-import javafx.scene.image.Image;
 import java.util.List;
 
 public class Recipe {
     private String name;
-    private List<String> ingredients;
+    private List<String> parsedIngredients;
     private String instructions;
-    private Image image; // Changed from String to Image
+    private String imagePath; // instead of javafx.scene.image.Image
 
-    public Recipe(String name, List<String> ingredients, String instructions, Image image) {
+    public Recipe(String name, List<String> ingredients, String instructions, String imagePath) {
         this.name = name;
-        this.ingredients = ingredients;
+        this.parsedIngredients = ingredients;
         this.instructions = instructions;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public List<String> getIngredients() { return parsedIngredients; }
+    public String getInstructions() { return instructions; }
+    public String getImagePath() { return imagePath; }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public String getInstructions() {
-        return instructions;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
+    public void setName(String name) { this.name = name; }
+    public void setIngredients(List<String> ingredients) { this.parsedIngredients = ingredients; }
+    public void setInstructions(String instructions) { this.instructions = instructions; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 }

@@ -20,6 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -44,20 +45,32 @@ public class RecipeDisplayController {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
         recipeTitle.setText(recipe.getName());
-        recipeImage.setImage(recipe.getImage());
         ingredientsList.getItems().setAll(recipe.getIngredients());
         instructionsText.setText(recipe.getInstructions());
+
+        if (recipe.getImagePath() != null) {
+            try {
+                File imageFile = new File(recipe.getImagePath());
+                if (imageFile.exists()) {
+                    recipeImage.setImage(new Image(imageFile.toURI().toString()));
+                }
+            } catch (Exception e) {
+                System.out.println("Error loading image: " + e.getMessage());
+            }
+        }
     }
 
 
-    private void updateUI() {
-        if (recipe != null) {
-            recipeTitle.setText(recipe.getName());
-            ingredientsList.getItems().setAll(recipe.getIngredients());
-            instructionsText.setText(recipe.getInstructions());
 
-            if (recipe.getImage() != null) {
-                recipeImage.setImage(recipe.getImage());
+    private void updateUI() {
+        if (recipe.getImagePath() != null) {
+            try {
+                File imageFile = new File(recipe.getImagePath());
+                if (imageFile.exists()) {
+                    recipeImage.setImage(new Image(imageFile.toURI().toString()));
+                }
+            } catch (Exception e) {
+                System.out.println("Error loading image: " + e.getMessage());
             }
         }
     }
@@ -124,16 +137,4 @@ public class RecipeDisplayController {
         }
     }
 
-
-
-    public void handleBackToMainMenu(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
