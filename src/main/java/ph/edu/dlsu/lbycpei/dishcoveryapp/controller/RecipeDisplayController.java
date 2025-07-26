@@ -92,27 +92,48 @@ public class RecipeDisplayController {
         System.out.println("Delete action triggered");
 
         if (recipe != null) {
-            System.out.println("Deleting: " + recipe.getName());
+            System.out.println("Attempting to delete: " + recipe.getName());
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirm Deletion");
-            alert.setHeaderText("Delete " + recipe.getName() + "?");
-            alert.setContentText("This cannot be undone!");
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/ConfirmDelete.fxml"));
+                Parent root = loader.load();
 
-            Optional<ButtonType> result = alert.showAndWait();
+                // Access the controller to get button references
+                ConfirmDeleteController controller = loader.getController();
+                Button yesButton = controller.yesButton;
+                Button cancelButton = controller.cancelButton;
 
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                boolean deleted = RecipeRepository.deleteRecipe(recipe);
-                System.out.println("Deletion " + (deleted ? "successful" : "failed"));
+                Stage popupStage = new Stage();
+                popupStage.initModality(Modality.APPLICATION_MODAL);
+                popupStage.setTitle("Confirm Delete");
+                popupStage.setScene(new Scene(root));
 
-                showDeletedPopup(event);
-            } else {
-                System.out.println("User canceled deletion.");
+                // YES deletes the recipe
+                yesButton.setOnAction(e -> {
+                    boolean deleted = RecipeRepository.deleteRecipe(recipe);
+                    System.out.println("Deletion " + (deleted ? "successful" : "failed"));
+                    popupStage.close(); // close confirmation popup
+                    showDeletedPopup(event); // show success
+                });
+
+                // CANCEL just closes the confirmation popup
+                cancelButton.setOnAction(e -> {
+                    System.out.println("User canceled deletion.");
+                    popupStage.close();
+                });
+
+                popupStage.showAndWait();
+
+            } catch (IOException e) {
+                System.out.println("Error loading ConfirmDelete.fxml");
+                e.printStackTrace();
             }
+
         } else {
             System.out.println("Error: No recipe to delete");
         }
     }
+
 
     private void showDeletedPopup(ActionEvent event) {
         try {
