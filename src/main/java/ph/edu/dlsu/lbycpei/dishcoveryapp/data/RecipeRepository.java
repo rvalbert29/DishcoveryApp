@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +49,6 @@ public class RecipeRepository {
         }
     }
 
-
     private static void loadRecipesFromFile() {
         File file = new File(FILE_PATH);
         if (!file.exists()) return;
@@ -71,5 +69,16 @@ public class RecipeRepository {
         }
     }
 
+    private static List<Recipe> favoriteRecipes = new ArrayList<>();
 
+    public static void addFavorite(Recipe recipe) {
+        if (!favoriteRecipes.contains(recipe)) {
+            favoriteRecipes.add(recipe);
+        }
+    }
+
+    public static List<Recipe> getFavoriteRecipes() {
+        return favoriteRecipes;
+    }
 }
+
