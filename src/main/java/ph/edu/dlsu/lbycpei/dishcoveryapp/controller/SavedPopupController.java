@@ -49,7 +49,7 @@ public class SavedPopupController {
             controller.setRecipe(savedRecipe);
 
             Stage stage = (Stage) viewButton.getScene().getWindow();
-            stage.close(); // Close popup first
+            stage.close();
 
             Stage mainStage = new Stage();
             mainStage.setScene(new Scene(root));

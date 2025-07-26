@@ -38,8 +38,6 @@ public class RecipeDisplayController {
     @FXML
     private void initialize() {
         backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-
-        // Add search functionality here
     }
 
     public void setRecipe(Recipe recipe) {
@@ -59,7 +57,6 @@ public class RecipeDisplayController {
             }
         }
     }
-
 
 
     private void updateUI() {
@@ -126,8 +123,6 @@ public class RecipeDisplayController {
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setTitle("Deleted");
             popupStage.setScene(new Scene(root));
-
-            // Wait for user to close popup, then go back to main menu
             popupStage.showAndWait();
             handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml");
 

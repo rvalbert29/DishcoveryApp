@@ -29,8 +29,6 @@ public class FindRecipeController {
     private void initialize() {
         backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
         matchRecipesButton.setOnAction(this::handleSearchRecipe);
-
-        // Add search functionality here
     }
 
     @FXML
