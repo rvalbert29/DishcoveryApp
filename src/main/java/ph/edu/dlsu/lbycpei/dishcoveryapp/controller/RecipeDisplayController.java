@@ -14,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -138,40 +137,4 @@ public class RecipeDisplayController {
         }
     }
 
-    private void showFavoritePopup() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Favorited.fxml"));
-            Parent popupRoot = loader.load();
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Added to Favorites");
-            popupStage.setScene(new Scene(popupRoot));
-            popupStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML private Button addToFavoritesButton;
-
-    @FXML
-    private void handleAddToFavorites(ActionEvent event) {
-        // Add the currently displayed recipe to the favorites list
-        RecipeRepository.addFavorite(this.recipe);  // `this.recipe` must be set previously
-
-        // Show the "Added to Favorites" popup
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Favorited.fxml"));
-            Parent root = loader.load();
-
-            FavoritePopupController controller = loader.getController();
-            Stage popupStage = new Stage();
-            controller.setPopupStage(popupStage);
-
-            popupStage.initStyle(StageStyle.UNDECORATED);
-            popupStage.setScene(new Scene(root));
-            popupStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
