@@ -69,12 +69,11 @@ public class AddRecipeController {
         recipeImageView.setImage(null);
         selectedImageFile = null;
 
-        // Show the placeholder text again
-        placeholderText.setVisible(true);  // Fix this line too (see below)
+        placeholderText.setVisible(true);
     }
 
     @FXML
-    private Text placeholderText; // bind this to the <Text> inside the StackPane
+    private Text placeholderText;
 
     @FXML
     private void handleBackToMainMenu(ActionEvent event, String s) {
@@ -103,13 +102,12 @@ public class AddRecipeController {
             selectedImageFile = file;
 
             // Hide the placeholder text
-            placeholderText.setVisible(false);  // Fix this line too (see below)
-
+            placeholderText.setVisible(false);
             recipeImageView.setImage(image);
-            recipeImageView.setFitWidth(200); // or your desired width
-            recipeImageView.setFitHeight(200); // or your desired height
-            recipeImageView.setPreserveRatio(true); // maintain image proportions
-            recipeImageView.setSmooth(true); // better scaling quality
+            recipeImageView.setFitWidth(200);
+            recipeImageView.setFitHeight(200);
+            recipeImageView.setPreserveRatio(true);
+            recipeImageView.setSmooth(true);
         }
     }
 

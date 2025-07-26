@@ -21,7 +21,6 @@ public class PantryManagerController {
     @FXML
     private void initialize() {
         backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-        // Add event logic here
     }
 
     @FXML
