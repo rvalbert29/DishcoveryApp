@@ -156,33 +156,38 @@ public class RecipeDisplayController {
     @FXML
     private void handleAddToFavorites(ActionEvent event) {
         if (recipe != null) {
-            RecipeRepository.addFavoriteRecipe(recipe);
-            RecipeRepository.saveFavoritesToJson();
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Favorited.fxml"));
-                Parent root = loader.load();
+            boolean added = RecipeRepository.addFavoriteRecipe(recipe);
 
-                Stage popupStage = new Stage();
-                popupStage.initModality(Modality.APPLICATION_MODAL);
-                popupStage.setTitle("Added to Favorites");
-                popupStage.setScene(new Scene(root));
+            if (added) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Favorited.fxml"));
+                    Parent root = loader.load();
 
-                // Access buttons
-                Button closeButton = (Button) loader.getNamespace().get("closeButton");
-                Button viewButton = (Button) loader.getNamespace().get("viewButton");
+                    Stage popupStage = new Stage();
+                    popupStage.initModality(Modality.APPLICATION_MODAL);
+                    popupStage.setTitle("Added to Favorites");
+                    popupStage.setScene(new Scene(root));
 
-                closeButton.setOnAction(e -> popupStage.close());
-                viewButton.setOnAction(e -> {
-                    popupStage.close();
-                    showFavoritesScene(event);
-                });
+                    // Access buttons
+                    Button closeButton = (Button) loader.getNamespace().get("closeButton");
+                    Button viewButton = (Button) loader.getNamespace().get("viewButton");
 
-                popupStage.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
+                    closeButton.setOnAction(e -> popupStage.close());
+                    viewButton.setOnAction(e -> {
+                        popupStage.close();
+                        showFavoritesScene(event);
+                    });
+
+                    popupStage.showAndWait();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                showInFavoritesPopup(); // If already in favorites, displays the popup
             }
         }
     }
+
 
     private void showFavoritesScene(ActionEvent event) {
         try {
@@ -191,6 +196,30 @@ public class RecipeDisplayController {
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showInFavoritesPopup() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/InFaves.fxml"));
+            AnchorPane root = loader.load();
+
+            // Access the Close button via fx:id
+            Button closeButton = (Button) root.lookup("#closeButton");
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(root));
+            popupStage.setTitle("Already in Favorites");
+
+            // Close action
+            if (closeButton != null) {
+                closeButton.setOnAction(e -> popupStage.close());
+            }
+
+            popupStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

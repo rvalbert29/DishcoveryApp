@@ -15,6 +15,7 @@ public class RecipeRepository {
     private static final String FILE_PATH = "data/recipes.json";
     private static  List<Recipe> recipes = new ArrayList<>();
 
+
     static {
         loadRecipesFromFile(); // Load when class is first used
     }
@@ -67,16 +68,19 @@ public class RecipeRepository {
 
         } catch (IOException | JsonSyntaxException e) {
             e.printStackTrace();
-            recipes = new ArrayList<>(); // fallback to prevent crash
+            recipes = new ArrayList<>();
         }
     }
 
     private static final List<Recipe> favoriteRecipes = new ArrayList<>();
 
-    public static void addFavoriteRecipe(Recipe recipe) {
+    public static boolean addFavoriteRecipe(Recipe recipe) {
         if (!favoriteRecipes.contains(recipe)) {
             favoriteRecipes.add(recipe);
+            saveFavoritesToJson(); // Save every time we add
+            return true;
         }
+        return false;
     }
 
     public static List<Recipe> getFavoriteRecipes() {

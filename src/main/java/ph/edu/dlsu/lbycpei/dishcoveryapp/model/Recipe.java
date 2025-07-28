@@ -20,8 +20,20 @@ public class Recipe {
     public String getInstructions() { return instructions; }
     public String getImagePath() { return imagePath; }
 
-    public void setName(String name) { this.name = name; }
-    public void setIngredients(List<String> ingredients) { this.parsedIngredients = ingredients; }
-    public void setInstructions(String instructions) { this.instructions = instructions; }
-    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+
+    //used so the entries in the favorite will not be duplicated
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Recipe other = (Recipe) obj;
+        return name.equals(other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
 }
