@@ -56,7 +56,12 @@
             </VBox>
 
             <!-- Image Upload -->
-            <VBox spacing="10">
+            <VBox alignment="CENTER" spacing="10">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image Preview:">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Text>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                    <ImageView fx:id="recipeImageView" fitHeight="50" fitWidth="50" preserveRatio="true" />
