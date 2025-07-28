@@ -15,14 +15,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
+
 
 public class RecipeDisplayController {
 
@@ -32,12 +29,15 @@ public class RecipeDisplayController {
     @FXML private ListView<String> ingredientsList;
     @FXML private TextArea instructionsText;
     @FXML private Button backButton;
+    @FXML private Button favoriteButton;
+
 
     private Recipe recipe;
 
     @FXML
     private void initialize() {
         backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+        favoriteButton.setOnAction(this::handleAddToFavorites);
     }
 
     public void setRecipe(Recipe recipe) {
@@ -153,4 +153,46 @@ public class RecipeDisplayController {
         }
     }
 
+    @FXML
+    private void handleAddToFavorites(ActionEvent event) {
+        if (recipe != null) {
+            RecipeRepository.addFavoriteRecipe(recipe);
+            RecipeRepository.saveFavoritesToJson();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/Favorited.fxml"));
+                Parent root = loader.load();
+
+                Stage popupStage = new Stage();
+                popupStage.initModality(Modality.APPLICATION_MODAL);
+                popupStage.setTitle("Added to Favorites");
+                popupStage.setScene(new Scene(root));
+
+                // Access buttons
+                Button closeButton = (Button) loader.getNamespace().get("closeButton");
+                Button viewButton = (Button) loader.getNamespace().get("viewButton");
+
+                closeButton.setOnAction(e -> popupStage.close());
+                viewButton.setOnAction(e -> {
+                    popupStage.close();
+                    showFavoritesScene(event);
+                });
+
+                popupStage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showFavoritesScene(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/FavoriteRecipe.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

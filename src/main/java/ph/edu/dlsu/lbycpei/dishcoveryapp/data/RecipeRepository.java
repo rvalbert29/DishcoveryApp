@@ -71,5 +71,55 @@ public class RecipeRepository {
         }
     }
 
+    private static final List<Recipe> favoriteRecipes = new ArrayList<>();
+
+    public static void addFavoriteRecipe(Recipe recipe) {
+        if (!favoriteRecipes.contains(recipe)) {
+            favoriteRecipes.add(recipe);
+        }
+    }
+
+    public static List<Recipe> getFavoriteRecipes() {
+        return new ArrayList<>(favoriteRecipes);
+    }
+
+    public static void removeFavoriteRecipe(Recipe recipe) {
+        favoriteRecipes.remove(recipe);
+    }
+
+    private static final String FAVORITES_FILE_PATH = "data/favorites.json";
+
+    // Save favorites to favorites.json
+    public static void saveFavoritesToJson() {
+        File dir = new File("data");
+        if (!dir.exists()) dir.mkdirs();
+
+        try (Writer writer = new FileWriter(FAVORITES_FILE_PATH)) {
+            new Gson().toJson(favoriteRecipes, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Load favorites from favorites.json
+    public static void loadFavoritesFromJson() {
+        File file = new File(FAVORITES_FILE_PATH);
+        if (!file.exists()) return;
+
+        try (Reader reader = new FileReader(file)) {
+            if (file.length() == 0) return;
+
+            Type recipeListType = new TypeToken<List<Recipe>>() {}.getType();
+            List<Recipe> loadedFavorites = new Gson().fromJson(reader, recipeListType);
+
+            if (loadedFavorites != null) {
+                favoriteRecipes.clear();
+                favoriteRecipes.addAll(loadedFavorites);
+            }
+        } catch (IOException | JsonSyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

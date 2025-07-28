@@ -63,6 +63,7 @@ public class FindRecipeController {
             }
         } else {
             System.out.println("Recipe not found.");
+            showNotFoundPopup();
         }
     }
 
@@ -79,6 +80,25 @@ public class FindRecipeController {
         }
 
         return null;
+    }
+
+
+    private void showNotFoundPopup() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/NotFound.fxml"));
+            Stage popupStage = new Stage();
+            popupStage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Recipe Not Found");
+            popupStage.setScene(new Scene(loader.load()));
+
+            // Optional: Get the button and handle close directly here
+            Button closeBtn = (Button) loader.getNamespace().get("closeButton1");
+            closeBtn.setOnAction(e -> popupStage.close());
+
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

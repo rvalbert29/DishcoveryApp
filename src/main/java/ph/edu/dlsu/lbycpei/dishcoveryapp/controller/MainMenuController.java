@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
+
 import java.io.IOException;
 
 public class MainMenuController {
@@ -19,10 +21,12 @@ public class MainMenuController {
     @FXML
     private void initialize() {
         // Button handlers
-        pantryManagerButton.setOnAction(event -> switchScene(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/PantryManager1.fxml"));
+        pantryManagerButton.setOnAction(event -> switchScene(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/PantryManager2.fxml"));
         addRecipesButton.setOnAction(event -> switchScene(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/AddRecipe.fxml"));
         findRecipesButton.setOnAction(event -> switchScene(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/FindRecipe.fxml"));
         favoritesButton.setOnAction(event -> switchScene(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/FavoriteRecipe.fxml"));
+        RecipeRepository.loadFavoritesFromJson();
+
     }
 
     private void switchScene(ActionEvent event, String fxmlPath) {
@@ -35,4 +39,5 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+
 }

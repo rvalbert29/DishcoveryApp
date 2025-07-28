@@ -25,7 +25,7 @@
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="345.0" translateX="155.0">
                <children>
                   <Button fx:id="deleteButton" onAction="#handleDeleteRecipe" mnemonicParsing="false" prefHeight="45.0" prefWidth="154.0" text="Delete Recipe" />
-                  <Button mnemonicParsing="false" text="Add to Favorites" translateX="21.0" />
+                  <Button fx:id="favoriteButton" mnemonicParsing="false" text="Add to Favorites" translateX="21.0" />
                </children>
             </HBox>
          </children>
