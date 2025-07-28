@@ -3,20 +3,17 @@ package ph.edu.dlsu.lbycpei.dishcoveryapp.controller;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class FindRecipeController {

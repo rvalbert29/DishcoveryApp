@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -98,7 +97,7 @@ public class FavoriteRecipeController {
         removeButton.setStyle("-fx-background-color: transparent;");
         removeButton.setOnAction(e -> showConfirmRemovePopup(recipe));
 
-        // Place trashcan in top-right using a StackPane
+        //  trashcan in top-right using a StackPane
         StackPane stackPane = new StackPane();
         stackPane.setPrefSize(220, 220);
         stackPane.getChildren().addAll(box, removeButton);
@@ -112,7 +111,7 @@ public class FavoriteRecipeController {
         // Make recipe clickable
         box.setOnMouseClicked(event -> openRecipe(recipe));
 
-        return new VBox(stackPane); // wrap the whole thing so it fits in your GridPane
+        return new VBox(stackPane);
     }
 
 

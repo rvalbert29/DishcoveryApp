@@ -37,7 +37,7 @@ public class SavedPopupController {
 
     private void handleClose(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close(); // Just close the popup — AddRecipeController will go to main menu
+        stage.close();
     }
 
     private void handleView(ActionEvent event) {
