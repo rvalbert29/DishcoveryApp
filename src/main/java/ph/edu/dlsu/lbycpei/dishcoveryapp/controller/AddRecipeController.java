@@ -22,7 +22,9 @@ import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 
 import java.io.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddRecipeController {
 
@@ -111,10 +113,15 @@ public class AddRecipeController {
         }
     }
 
+    @FXML
+    private TextArea ingredientsQuantityArea;
+
     private void handleSaveRecipe() {
         String name = recipeNameField.getText().trim();
         String ingredientsText = ingredientsArea.getText().trim();
         String instructions = instructionsArea.getText().trim();
+        String ingredientsQuantityText = ingredientsQuantityArea.getText().trim();
+
 
         if (name.isEmpty() || ingredientsText.isEmpty() || instructions.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -123,6 +130,18 @@ public class AddRecipeController {
             alert.setContentText("Please fill in all fields.");
             alert.showAndWait();
             return;
+        }
+
+        // Process ingredients and quantities
+        String[] ingredientLines = ingredientsText.split("\\r?\\n");
+        String[] quantityLines = ingredientsQuantityText.split("\\r?\\n");
+
+        // Create map to store ingredients with quantities
+        Map<String, String> ingredientsMap = new LinkedHashMap<>();
+        for (int i = 0; i < ingredientLines.length; i++) {
+            String ingredient = ingredientLines[i].trim();
+            String quantity = i < quantityLines.length ? quantityLines[i].trim() : "";
+            ingredientsMap.put(ingredient, quantity);
         }
 
 
@@ -150,8 +169,7 @@ public class AddRecipeController {
         }
 
         List<String> parsedIngredients = List.of(ingredientsText.split("\\r?\\n"));
-        Recipe newRecipe = new Recipe(name, parsedIngredients, instructions, imagePath);
-
+        Recipe newRecipe = new Recipe(name, ingredientsMap, instructions, imagePath);
         RecipeRepository.addRecipe(newRecipe);
 
         System.out.println("Recipe saved to file!");
