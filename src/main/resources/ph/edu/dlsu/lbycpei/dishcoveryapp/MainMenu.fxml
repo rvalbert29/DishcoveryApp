@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.MainMenuController">
+<AnchorPane prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.MainMenuController">
 
     <stylesheets>
         <URL value="@styles.css" />
@@ -27,16 +27,16 @@
               <!-- Image placeholder - replace with your actual image -->
               <ImageView fitHeight="141.0" fitWidth="743.0" preserveRatio="false" styleClass="image">
                   <image>
-                      <Image url="@images/header_background.png" />
+                      <Image url="@images/banner.png" />
                   </image>
               </ImageView>
          </children>
       </HBox>
 
               <!-- Title Text -->
-        <Text fill="WHITE" strokeWidth="0" style="-fx-font-weight: bold;" text="Welcome to Dishcovery!">
+        <Text fill="WHITE" strokeWidth="0" style="-fx-font-weight: bold; -fx-font: bauhaus 93;" text="Welcome to Dishcovery!">
             <font>
-                <Font size="24.0" />
+                <Font name="Bauhaus 93" size="45.0" />
             </font>
         </Text>
     </StackPane>
