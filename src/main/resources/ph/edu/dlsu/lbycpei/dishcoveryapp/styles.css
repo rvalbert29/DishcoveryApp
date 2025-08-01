@@ -26,3 +26,25 @@
     -fx-border-width: 2px;
     -fx-border-radius: 10;
 }
+
+.title{
+    -fx-text-fill: #234307;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+    -fx-font-family: "Droid Sans Mono";
+}
+
+.backdrop {
+    -fx-background-color: #758c69;
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.subtitle{
+    -fx-text-fill: #deffc8;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5;
+}

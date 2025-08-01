@@ -19,6 +19,9 @@ import javafx.stage.Modality;
 import ph.edu.dlsu.lbycpei.dishcoveryapp.data.RecipeRepository;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class RecipeDisplayController {
@@ -43,7 +46,17 @@ public class RecipeDisplayController {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
         recipeTitle.setText(recipe.getName());
-        ingredientsList.getItems().setAll(recipe.getIngredients());
+
+        // Convert the map to display strings "quantity ingredient"
+        List<String> displayIngredients = new ArrayList<>();
+        for (Map.Entry<String, String> entry : recipe.getIngredientsWithQuantities().entrySet()) {
+            String display = entry.getValue().isEmpty() ?
+                    entry.getKey() :
+                    entry.getKey() + " " + entry.getValue();
+            displayIngredients.add(display);
+        }
+
+        ingredientsList.getItems().setAll(displayIngredients);
         instructionsText.setText(recipe.getInstructions());
 
         if (recipe.getImagePath() != null) {
@@ -58,19 +71,6 @@ public class RecipeDisplayController {
         }
     }
 
-
-    private void updateUI() {
-        if (recipe.getImagePath() != null) {
-            try {
-                File imageFile = new File(recipe.getImagePath());
-                if (imageFile.exists()) {
-                    recipeImage.setImage(new Image(imageFile.toURI().toString()));
-                }
-            } catch (Exception e) {
-                System.out.println("Error loading image: " + e.getMessage());
-            }
-        }
-    }
 
     @FXML
     private void handleBackToMainMenu(ActionEvent event, String s) {
