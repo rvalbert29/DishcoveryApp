@@ -11,7 +11,6 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
         Scene scene = new Scene(loader.load(), 1000, 600);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.setTitle("Dishcovery App");
         primaryStage.setScene(scene);
         primaryStage.show();
