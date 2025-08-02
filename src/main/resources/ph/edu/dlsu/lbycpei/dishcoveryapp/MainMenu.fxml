@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.MainMenuController">
+<AnchorPane id="root" prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.MainMenuController">
 
     <stylesheets>
         <URL value="@styles.css" />
@@ -22,7 +21,7 @@
 
     <!-- Background Image with Title -->
     <StackPane translateY="100.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
               <!-- Image placeholder - replace with your actual image -->
               <ImageView fitHeight="141.0" fitWidth="743.0" preserveRatio="false" styleClass="image">
@@ -30,26 +29,26 @@
                       <Image url="@images/banner.png" />
                   </image>
               </ImageView>
+      
+                    <!-- Title Text -->
+              <Text fill="WHITE" strokeWidth="0" styleClass="header" text="Welcome to Dishcovery!">
+                  <font>
+                      <Font size="45.0" />
+                  </font>
+              </Text>
          </children>
-      </HBox>
-
-              <!-- Title Text -->
-        <Text fill="WHITE" strokeWidth="0" style="-fx-font-weight: bold; -fx-font: bauhaus 93;" text="Welcome to Dishcovery!">
-            <font>
-                <Font name="Bauhaus 93" size="45.0" />
-            </font>
-        </Text>
+      </StackPane>
     </StackPane>
 
     <!-- Main Content -->
-    <VBox alignment="CENTER" layoutY="161.33333333333334" prefHeight="300.0" prefWidth="960.0" spacing="20" translateY="80.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="161.0">
+    <VBox alignment="CENTER" layoutX="20.0" layoutY="167.0" prefHeight="300.0" prefWidth="960.0" spacing="20" translateY="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="167.0">
         <!-- App Description -->
-        <Text style="-fx-font-style: italic;" textAlignment="CENTER" translateY="-30.0" wrappingWidth="621.3333740234375">
+        <Text styleClass="description" textAlignment="CENTER" translateY="-30.0" wrappingWidth="621.3333740234375">
             Discover the joy of sustainable cooking. DISHCOVERY helps you turn your leftover ingredients into delicious recipes — reducing food waste while saving time and money. Whether you're a student, a beginner in the kitchen, or just someone trying to make the most out of what you have, this app is your personal guide to practical, zero-waste meal planning.
         </Text>
 
         <!-- Buttons Grid -->
-        <GridPane alignment="CENTER" hgap="20" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="485.0" vgap="20">
+        <GridPane alignment="CENTER" hgap="20" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="485.0" stylesheets="@styles.css" vgap="20">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.66667683919272" minWidth="10.0" prefWidth="186.33333333333334" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.7777404785156" minWidth="10.0" prefWidth="39.666646321614564" />

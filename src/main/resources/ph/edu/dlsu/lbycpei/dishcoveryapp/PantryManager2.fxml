@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.PantryManagerController">
+<AnchorPane prefHeight="600" prefWidth="1000" styleClass="background" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.lbycpei.dishcoveryapp.controller.PantryManagerController">
 
     <stylesheets>
         <URL value="@styles.css" />
@@ -29,18 +29,18 @@
                 <Image url="@images/banner.png" />
             </image>
         </ImageView>
-        <Text fill="WHITE" strokeWidth="0" style="-fx-font-weight: bold; -fx-font: bahause 93;" text="Pantry Manager" wrappingWidth="308.91143798828125">
+        <Text fill="WHITE" strokeWidth="0" styleClass="header" text="Pantry Manager" textAlignment="CENTER" wrappingWidth="372.91143798828125">
             <font>
-                <Font name="Bauhaus 93" size="42.0" />
+                <Font size="38.0" />
             </font>
         </Text>
     </StackPane>
 
     <!-- Main Content Area -->
     <ScrollPane fitToWidth="true" layoutX="60.0" prefHeight="595.0" prefWidth="873.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="160">
-        <VBox alignment="TOP_CENTER" spacing="30" styleClass="backdrop" stylesheets="@styles.css" AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="100" AnchorPane.topAnchor="180">
+        <VBox alignment="TOP_CENTER" spacing="30" stylesheets="@styles.css" AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="100" AnchorPane.topAnchor="180">
             <!-- Instruction Text -->
-            <Text style="-fx-font-size: 18px;" text="Your Ingredients:" />
+            <Text styleClass="title" text="Your Ingredients:" />
 
             <!-- Search Bar and Add Button -->
             <HBox alignment="CENTER" spacing="10">
@@ -59,7 +59,7 @@
 
             <!-- Entered Ingredients List -->
             <VBox fx:id="ingredientsListContainer" alignment="CENTER_LEFT" prefHeight="329.0" prefWidth="800.0" spacing="10" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 15;" styleClass="subtitle" translateY="-15.0">
-                <Text styleClass="subtitle" text="Recipes you can make:" />
+                <Text styleClass="label" text="Recipes you can make:" />
 
                 <!-- ScrollPane containing the GridPane -->
                 <ScrollPane fitToWidth="true" prefHeight="305.0" prefWidth="768.0" vbarPolicy="ALWAYS">
