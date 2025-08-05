@@ -24,27 +24,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class FavoriteRecipeController {
+public class FavoriteRecipeController extends BaseController{
 
     @FXML private GridPane recipesGridPane;
     @FXML private Button returnHomeButton;
 
     @FXML
     private void initialize() {
-        returnHomeButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+        returnHomeButton.setOnAction(this::handleBackToMainMenu);
         loadFavoriteRecipes();
-    }
-
-    @FXML
-    private void handleBackToMainMenu(ActionEvent event, String s) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void loadFavoriteRecipes() {
@@ -114,7 +102,6 @@ public class FavoriteRecipeController {
         return new VBox(stackPane);
     }
 
-
     private void openRecipe(Recipe recipe) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/RecipeDisplay.fxml"));
@@ -176,7 +163,5 @@ public class FavoriteRecipeController {
             e.printStackTrace();
         }
     }
-
-
 
 }

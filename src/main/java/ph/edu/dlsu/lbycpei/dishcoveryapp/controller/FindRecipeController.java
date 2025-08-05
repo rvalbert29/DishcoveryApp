@@ -16,7 +16,7 @@ import ph.edu.dlsu.lbycpei.dishcoveryapp.model.Recipe;
 import java.io.IOException;
 import java.util.List;
 
-public class FindRecipeController {
+public class FindRecipeController extends BaseController{
 
     @FXML private TextField ingredientSearchField;
     @FXML private Button matchRecipesButton;
@@ -24,21 +24,10 @@ public class FindRecipeController {
 
     @FXML
     private void initialize() {
-        backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+        backButton.setOnAction(this::handleBackToMainMenu);
         matchRecipesButton.setOnAction(this::handleSearchRecipe);
     }
 
-    @FXML
-    private void handleBackToMainMenu(ActionEvent event, String s) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void handleSearchRecipe(ActionEvent event) {
@@ -64,9 +53,6 @@ public class FindRecipeController {
         }
     }
 
-
-
-
     private Recipe getRecipeByName(String recipeName) {
         List<Recipe> allRecipes = RecipeRepository.getRecipes();
 
@@ -78,7 +64,6 @@ public class FindRecipeController {
 
         return null;
     }
-
 
     private void showNotFoundPopup() {
         try {

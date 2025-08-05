@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PantryManagerController {
+public class PantryManagerController extends BaseController {
 
     @FXML private TextField ingredientSearchField;
     @FXML private GridPane recipesGridPane;
@@ -31,19 +31,9 @@ public class PantryManagerController {
 
     @FXML
     private void initialize() {
-        backButton.setOnAction(event -> handleBackToMainMenu(event));
+        backButton.setOnAction(this::handleBackToMainMenu);
         matchRecipeButton.setOnAction(event -> handleMatchRecipes());
         // Initially, the grid pane should be empty.
-    }
-
-    private void handleBackToMainMenu(javafx.event.ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(loader.load(), 1000, 600));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void handleMatchRecipes() {
