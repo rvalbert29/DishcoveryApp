@@ -11,8 +11,6 @@ public class Recipe {
     private String instructions;
     private String imagePath;
 
-    // Required for Jackson
-    public Recipe() {}
 
     public Recipe(String name, Map<String, String> ingredientsWithQuantities, String instructions, String imagePath) {
         this.name = name;
@@ -42,20 +40,5 @@ public class Recipe {
         return new ArrayList<>(ingredientsWithQuantities.values());
     }
 
-    // Optional setters if you ever want to modify data
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setIngredientsWithQuantities(Map<String, String> ingredientsWithQuantities) {
-        this.ingredientsWithQuantities = ingredientsWithQuantities;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 }

@@ -64,9 +64,6 @@ public class FindRecipeController {
         }
     }
 
-
-
-
     private Recipe getRecipeByName(String recipeName) {
         List<Recipe> allRecipes = RecipeRepository.getRecipes();
 
@@ -78,7 +75,6 @@ public class FindRecipeController {
 
         return null;
     }
-
 
     private void showNotFoundPopup() {
         try {

@@ -114,7 +114,6 @@ public class FavoriteRecipeController {
         return new VBox(stackPane);
     }
 
-
     private void openRecipe(Recipe recipe) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/RecipeDisplay.fxml"));
@@ -176,7 +175,5 @@ public class FavoriteRecipeController {
             e.printStackTrace();
         }
     }
-
-
 
 }

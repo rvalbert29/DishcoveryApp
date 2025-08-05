@@ -26,7 +26,6 @@ import java.util.Map;
 
 public class RecipeDisplayController {
 
-    public AnchorPane rootPane;
     @FXML private ImageView recipeImage;
     @FXML private Text recipeTitle;
     @FXML private ListView<String> ingredientsList;
