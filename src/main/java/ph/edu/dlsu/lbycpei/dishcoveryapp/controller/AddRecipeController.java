@@ -26,7 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddRecipeController {
+public class AddRecipeController extends BaseController {
 
     @FXML
     private TextField recipeNameField;
@@ -61,7 +61,7 @@ public class AddRecipeController {
         uploadImageButton.setOnAction(e -> handleUploadImage());
         saveButton.setOnAction(e -> handleSaveRecipe());
         clearButton.setOnAction(e -> handleClear());
-        backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+        backButton.setOnAction(this::handleBackToMainMenu);
     }
 
     private void handleClear() {
@@ -76,18 +76,6 @@ public class AddRecipeController {
 
     @FXML
     private Text placeholderText;
-
-    @FXML
-    private void handleBackToMainMenu(ActionEvent event, String s) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void handleUploadImage() {
@@ -204,7 +192,7 @@ public class AddRecipeController {
 
             } else {
                 // user clicked Close
-                handleBackToMainMenu(null, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml");
+                handleBackToMainMenu(null);
             }
 
         } catch (IOException e) {

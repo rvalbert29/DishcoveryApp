@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class RecipeDisplayController {
+public class RecipeDisplayController extends BaseController {
 
     @FXML private ImageView recipeImage;
     @FXML private Text recipeTitle;
@@ -38,7 +38,7 @@ public class RecipeDisplayController {
 
     @FXML
     private void initialize() {
-        backButton.setOnAction(event -> handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
+        backButton.setOnAction(this::handleBackToMainMenu);
         favoriteButton.setOnAction(this::handleAddToFavorites);
     }
 
@@ -67,19 +67,6 @@ public class RecipeDisplayController {
             } catch (Exception e) {
                 System.out.println("Error loading image: " + e.getMessage());
             }
-        }
-    }
-
-
-    @FXML
-    private void handleBackToMainMenu(ActionEvent event, String s) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 600);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -144,7 +131,7 @@ public class RecipeDisplayController {
             popupStage.setTitle("Deleted");
             popupStage.setScene(new Scene(root));
             popupStage.showAndWait();
-            handleBackToMainMenu(event, "/ph/edu/dlsu/lbycpei/dishcoveryapp/MainMenu.fxml");
+            handleBackToMainMenu(event);
 
         } catch (IOException e) {
             System.out.println("Error loading Deleted.fxml");
