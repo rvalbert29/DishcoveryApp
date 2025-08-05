@@ -1,14 +1,18 @@
 package ph.edu.dlsu.lbycpei.dishcoveryapp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class Recipe {
+
     private String name;
-    private Map<String, String> ingredientsWithQuantities;
+    private Map<String, String> ingredientsWithQuantities; // quantity -> ingredient name
     private String instructions;
     private String imagePath;
+
+    // Required for Jackson
+    public Recipe() {}
 
     public Recipe(String name, Map<String, String> ingredientsWithQuantities, String instructions, String imagePath) {
         this.name = name;
@@ -17,27 +21,41 @@ public class Recipe {
         this.imagePath = imagePath;
     }
 
-    public String getName() { return name; }
-    public Map<String, String> getIngredientsWithQuantities() { return ingredientsWithQuantities; }
-    public String getInstructions() { return instructions; }
-    public String getImagePath() { return imagePath; }
+    public String getName() {
+        return name;
+    }
 
-    // Helper method to get just ingredient names (for searching)
+    public Map<String, String> getIngredientsWithQuantities() {
+        return ingredientsWithQuantities;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    // This is what PantryManager uses for matching
     public List<String> getIngredientNames() {
-        return new ArrayList<>(ingredientsWithQuantities.keySet());
+        return new ArrayList<>(ingredientsWithQuantities.values());
     }
 
-    //used so the entries in the favorite will not be duplicated
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Recipe other = (Recipe) obj;
-        return name.equals(other.name);
+    // Optional setters if you ever want to modify data
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public int hashCode() {
-        return name.hashCode();
+    public void setIngredientsWithQuantities(Map<String, String> ingredientsWithQuantities) {
+        this.ingredientsWithQuantities = ingredientsWithQuantities;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
