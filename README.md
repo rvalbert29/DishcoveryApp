@@ -46,7 +46,7 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
 
 ---
 
-````markdown
+
 # 🍽️ DishCoveryApp
 
 **Smart Recipe Suggestions for a Zero-Waste Kitchen**  
@@ -93,7 +93,7 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
    ```bash
    git clone https://github.com/yourusername/DishCoveryApp.git
    cd DishCoveryApp
-````
+
 2. **Open the Project**
 
    * Use **IntelliJ IDEA** (recommended).
