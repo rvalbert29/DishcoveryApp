@@ -6,16 +6,15 @@ _A JavaFX application that helps users reduce food waste by generating recipes b
 ---
 
 ## 📌 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Architecture](#architecture)
-- [Technologies Used](#technologies-used)
-- [Team Members](#team-members)
-- [Screenshots](#screenshots)
+- [Overview](#Overview)
+- [Features](#Features)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Architecture](#Architecture)
+- [Technologies Used](#Technologies-used)
+- [Team Members](#Team-members)
 - [Future Improvements](#future-improvements)
-- [License](#license)
+- [License](#License)
 
 ---
 
@@ -44,7 +43,6 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
    ```bash
    git clone https://github.com/yourusername/DishCoveryApp.git
    cd DishCoveryApp
-Absolutely! Here's the **complete updated `README.md`** with the Pantry Manager section revised to reflect its full functionality:
 
 ---
 
