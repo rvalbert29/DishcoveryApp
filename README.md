@@ -41,7 +41,7 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/yourusername/DishCoveryApp.git
+   git clone https://github.com/rvalbert29/DishcoveryApp.git
    cd DishCoveryApp
 
 ---
