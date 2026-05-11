@@ -1,60 +1,12 @@
-# 🍽️ DishCoveryApp
+
+# DishCoveryApp
 
 **Smart Recipe Suggestions for a Zero-Waste Kitchen**  
 _A JavaFX application that helps users reduce food waste by generating recipes based on their available ingredients._
 
 ---
 
-## 📌 Table of Contents
-- [Overview](#Overview)
-- [Features](#Features)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Architecture](#Architecture)
-- [Technologies Used](#Technologies-used)
-- [Team Members](#Team-members)
-- [Future Improvements](#future-improvements)
-- [License](#License)
-
----
-
-## 🧠 Overview
-
-DishCoveryApp is a Java-based desktop application designed to address the growing problem of food waste, especially among students and young adults. By inputting ingredients currently available in their pantry, users can discover practical recipes that promote sustainability and responsible consumption—aligned with UN Sustainable Development Goals (SDGs 2 and 12).
-
----
-
-## ✨ Features
-
-- 🧾 **Pantry Management**: Users can input the ingredients they currently have at home. The app then suggests recipes based on these ingredients. It also highlights which ingredients are **missing** for each suggested recipe, helping users plan meals or grocery trips more efficiently.
-- 🍳 **Smart Recipe Matching**: Suggests meals based on ingredient matches and displays missing ingredients if needed.
-- ❤️ **Favorites**: Mark recipes as favorites and view them later.
-- ➕ **Add Custom Recipes**: Save your own recipes with ingredient lists and cooking instructions.
-- 🖼️ **Image Upload**: Attach images for visual recipe cards.
-- 💾 **Persistent Storage**: Saves data locally via JSON files.
-- ⚠️ **Error Handling**: Input validation and user-friendly error popups.
-- 🎨 **Polished GUI**: Built with JavaFX and styled using CSS.
-
----
-
-## 🛠️ Installation
-
-1. **Clone the Repository**  
-   ```bash
-   git clone https://github.com/rvalbert29/DishcoveryApp.git
-   cd DishCoveryApp
-
----
-
-
-# 🍽️ DishCoveryApp
-
-**Smart Recipe Suggestions for a Zero-Waste Kitchen**  
-_A JavaFX application that helps users reduce food waste by generating recipes based on their available ingredients._
-
----
-
-## 📌 Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
@@ -68,26 +20,26 @@ _A JavaFX application that helps users reduce food waste by generating recipes b
 
 ---
 
-## 🧠 Overview
+## Overview
 
 DishCoveryApp is a Java-based desktop application designed to address the growing problem of food waste, especially among students and young adults. By inputting ingredients currently available in their pantry, users can discover practical recipes that promote sustainability and responsible consumption—aligned with UN Sustainable Development Goals (SDGs 2 and 12).
 
 ---
 
-## ✨ Features
+## Features
 
-- 🧾 **Pantry Management**: Users can input the ingredients they currently have at home. The app then suggests recipes based on these ingredients. It also highlights which ingredients are **missing** for each suggested recipe, helping users plan meals or grocery trips more efficiently.
-- 🍳 **Smart Recipe Matching**: Suggests meals based on ingredient matches and displays missing ingredients if needed.
-- ❤️ **Favorites**: Mark recipes as favorites and view them later.
-- ➕ **Add Custom Recipes**: Save your own recipes with ingredient lists and cooking instructions.
-- 🖼️ **Image Upload**: Attach images for visual recipe cards.
-- 💾 **Persistent Storage**: Saves data locally via JSON files.
-- ⚠️ **Error Handling**: Input validation and user-friendly error popups.
-- 🎨 **Polished GUI**: Built with JavaFX and styled using CSS.
+- **Pantry Management**: Users can input the ingredients they currently have at home. The app then suggests recipes based on these ingredients. It also highlights which ingredients are **missing** for each suggested recipe, helping users plan meals or grocery trips more efficiently.
+- **Smart Recipe Matching**: Suggests meals based on ingredient matches and displays missing ingredients if needed.
+- **Favorites**: Mark recipes as favorites and view them later.
+- **Add Custom Recipes**: Save your own recipes with ingredient lists and cooking instructions.
+- **Image Upload**: Attach images for visual recipe cards.
+- **Persistent Storage**: Saves data locally via JSON files.
+- **Error Handling**: Input validation and user-friendly error popups.
+- **Polished GUI**: Built with JavaFX and styled using CSS.
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone the Repository**  
    ```bash
@@ -111,7 +63,7 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
 
 ---
 
-## 🚀 Usage
+## Usage
 
 * Launch the app and navigate through the **Main Menu**.
 * Use **Add Recipe** to create new recipes with image, ingredients, and steps.
@@ -124,7 +76,7 @@ DishCoveryApp is a Java-based desktop application designed to address the growin
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The app follows a modular, Object-Oriented Programming (OOP) structure with MVC-like principles.
 
@@ -151,7 +103,7 @@ The app follows a modular, Object-Oriented Programming (OOP) structure with MVC-
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 | Tech/Library  | Purpose                      |
 | ------------- | ---------------------------- |
@@ -163,7 +115,7 @@ The app follows a modular, Object-Oriented Programming (OOP) structure with MVC-
 
 ---
 
-## 👨‍👩‍👧‍👦 Group Members
+## Group Members
 
 | Name                        | Student ID | Roles                               |
 | --------------------------- | ---------- | ----------------------------------- |
@@ -173,7 +125,7 @@ The app follows a modular, Object-Oriented Programming (OOP) structure with MVC-
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * Implement a **Login/User Profile** system
 * Enhance **ingredient matching** with fuzzy logic
