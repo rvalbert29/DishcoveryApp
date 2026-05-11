@@ -114,7 +114,7 @@ The app follows a modular, Object-Oriented Programming (OOP) structure with MVC-
 
 ---
 
-## Group Members
+## Team Members
 
 | Name                        | Student ID | Roles                               |
 | --------------------------- | ---------- | ----------------------------------- |
