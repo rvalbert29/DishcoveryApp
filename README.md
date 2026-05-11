@@ -14,7 +14,6 @@ _A JavaFX application that helps users reduce food waste by generating recipes b
 - [Architecture](#architecture)
 - [Technologies Used](#technologies-used)
 - [Team Members](#team-members)
-- [Screenshots](#screenshots)
 - [Future Improvements](#future-improvements)
 - [License](#license)
 
